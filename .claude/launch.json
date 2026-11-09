@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "rexell",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "rexell"],
+      "port": 8765
+    },
+    {
+      "name": "rexell-alt",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8771", "--directory", "rexell"],
+      "port": 8771,
+      "autoPort": false
+    }
+  ]
+}

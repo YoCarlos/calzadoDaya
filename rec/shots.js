@@ -1,0 +1,23 @@
+const puppeteer=require('puppeteer-core');
+const [,,file,outdir]=process.argv;
+(async()=>{
+ const b=await puppeteer.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--hide-scrollbars']});
+ const p=await b.newPage(); const errs=[]; p.on('pageerror',e=>errs.push(e.message)); p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+ await p.setViewport({width:1600,height:1000});
+ await p.goto('file:///'+file,{waitUntil:'networkidle0'}); await p.evaluate(()=>document.fonts.ready);
+ await p.screenshot({path:outdir+'/a-hero.png'});
+ await p.evaluate(()=>{document.querySelector('#configurador').scrollIntoView();document.querySelector('[data-v=negro][data-k=color]').click();});
+ await new Promise(r=>setTimeout(r,1200)); await p.screenshot({path:outdir+'/b-estilo.png'});
+ await p.evaluate(()=>{document.querySelector('#tab-confort').click();});
+ await new Promise(r=>setTimeout(r,600)); await p.evaluate(()=>{document.querySelector('#hygSwitch').click();document.querySelector('[data-k=arch][data-v=medio]').click();});
+ await new Promise(r=>setTimeout(r,1400)); await p.screenshot({path:outdir+'/c-confort.png'});
+ await p.evaluate(()=>{document.querySelector('#tab-resumen').click();});
+ await new Promise(r=>setTimeout(r,1200)); await p.screenshot({path:outdir+'/d-resumen.png'});
+ await p.evaluate(()=>{document.querySelector('#nextBtn').click();});
+ await new Promise(r=>setTimeout(r,1400)); await p.screenshot({path:outdir+'/e-modal.png'});
+ await p.setViewport({width:390,height:844}); await p.evaluate(()=>{document.querySelector('#closeModal').click();document.querySelector('#tab-confort').click();window.scrollTo(0,0)});
+ await new Promise(r=>setTimeout(r,1000));
+ const ov=await p.evaluate(()=>document.documentElement.scrollWidth); errs.push('mobile scrollWidth '+ov);
+ await p.screenshot({path:outdir+'/f-mobile.png',fullPage:true});
+ console.log(errs.join('\n')||'no errors'); await b.close();
+})();

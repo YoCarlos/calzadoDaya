@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Rexell Spot 15s</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--paper:#F2F2EF;--ink:#16191D;--accent:#2350D2;--coral:#FF6A57;--muted:#5B6168;
+  --insole:#2F6CDB;--insole-edge:#173C86;
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;--font-mono:"IBM Plex Mono",Consolas,monospace;--font-body:"IBM Plex Sans",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#000}
+#film{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--paper);font-family:var(--font-body);color:var(--ink)}
+.layer{position:absolute;inset:0}
+.abs{position:absolute}
+.disp{font-family:var(--font-display);font-stretch:112%;font-weight:800;letter-spacing:-.01em;line-height:1.02}
+.eyebrow{font-family:var(--font-mono);font-size:22px;letter-spacing:.16em;text-transform:uppercase}
+.rv{display:block;overflow:hidden;padding-bottom:.08em}
+.rv>span{display:inline-block;will-change:transform}
+/* shoe */
+.shoe{display:block;width:100%;height:auto;overflow:visible}
+.shoe .lc{fill:var(--lc)}.shoe .lace{stroke:var(--lace)}.shoe .sole{fill:var(--sole)}.shoe .thread{stroke:var(--thread)}
+.shoe .tx-fine{opacity:.1}.shoe .tx-pebble,.shoe .tx-suede{opacity:0}.shoe .gloss{opacity:.65}
+.black{--lc:#1D1C1E;--thread:#8F8A85;--sole:#ECE5D6;--lace:#151515}
+.worn{--lc:#6E4630;--thread:#B89878;--sole:#BDB2A0;--lace:#3E2618}
+/* S1 */
+#s1{background:radial-gradient(90% 80% at 35% 40%,#24282E,#0E1013)}
+.ground{position:absolute;left:0;right:0;top:812px;bottom:0}
+#g1{background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='64'%3E%3Crect x='3' y='4' width='84' height='26' rx='9' fill='%23ffffff' fill-opacity='.05'/%3E%3Crect x='93' y='4' width='84' height='26' rx='9' fill='%23ffffff' fill-opacity='.04'/%3E%3Crect x='-42' y='35' width='84' height='26' rx='9' fill='%23ffffff' fill-opacity='.045'/%3E%3Crect x='48' y='35' width='84' height='26' rx='9' fill='%23ffffff' fill-opacity='.055'/%3E%3Crect x='138' y='35' width='84' height='26' rx='9' fill='%23ffffff' fill-opacity='.04'/%3E%3C/svg%3E") repeat-x 0 0/180px 64px,
+  linear-gradient(#1A1D21,#0B0C0E);border-top:2px solid #ffffff14}
+.walker{position:absolute;width:820px;transform-origin:0 0}
+.heat{position:absolute;border-radius:50%;mix-blend-mode:screen;pointer-events:none}
+.heat.h{left:-2%;top:46%;width:300px;height:220px;background:radial-gradient(closest-side,#ff4a2bcc,#ff4a2b55 45%,#ff4a2b00)}
+.heat.b{left:56%;top:58%;width:260px;height:170px;background:radial-gradient(closest-side,#ff6a3dbb,#ff6a3d44 50%,#ff6a3d00)}
+.ring{position:absolute;border-radius:50%;border:3px solid;pointer-events:none}
+/* S2 laptop */
+#laptop{position:absolute;left:0;top:0;width:1000px;transform-origin:500px 290px}
+.lid{width:1000px;height:580px;padding:20px;border-radius:24px 24px 8px 8px;background:linear-gradient(#24272c,#15171a);box-shadow:0 0 0 2px #3a3d43 inset,0 60px 120px -40px #0008}
+.screen{width:960px;height:540px;overflow:hidden;border-radius:4px;background:#fff}
+.screen video{width:960px;height:540px;display:block;object-fit:cover}
+.base{width:1200px;height:30px;margin-left:-100px;border-radius:2px 2px 34px 34px;background:linear-gradient(#e3e5e9,#a6aab2);position:relative;box-shadow:0 30px 60px -20px #0006}
+.base::after{content:"";position:absolute;left:50%;top:0;width:160px;height:10px;margin-left:-80px;border-radius:0 0 10px 10px;background:#c4c7cd}
+/* video */
+#vfull{position:absolute;inset:0;width:1920px;height:1080px;object-fit:cover;transform-origin:50% 50%}
+.cap{position:absolute;left:64px;bottom:64px;background:#16191Dee;color:#fff;border-radius:10px;padding:20px 30px 22px;display:grid;gap:6px}
+.cap .eyebrow{font-size:17px;color:#9fb4ff}
+.cap .disp{font-size:52px}
+/* box */
+.rig{position:absolute;left:610px;top:300px;width:700px;height:560px;transform-origin:350px 330px}
+.rig svg{position:absolute;inset:0;width:700px;height:560px;overflow:visible}
+#mShoe{position:absolute;left:710px;top:408px;width:460px;transform-origin:50% 50%}
+#track{position:absolute;left:460px;top:930px;width:1000px;height:80px}
+#track .line{position:absolute;left:0;right:0;top:14px;height:3px;background:#16191D22}
+#track .fill{position:absolute;left:0;top:14px;height:3px;background:var(--accent)}
+.node{position:absolute;top:0;width:30px;height:30px;margin-left:-15px;border-radius:50%;background:#fff;border:3px solid #16191D33;display:grid;place-items:center;color:#fff;font-size:15px;font-weight:700}
+.node.on{background:var(--accent);border-color:var(--accent)}
+.node span{position:absolute;top:42px;white-space:nowrap;font-family:var(--font-mono);font-size:17px;color:var(--muted);letter-spacing:.04em}
+.node.on span{color:var(--ink)}
+.sticker{position:absolute;background:var(--accent);color:#fff;font-family:var(--font-mono);font-size:17px;padding:8px 14px;border-radius:6px;letter-spacing:.06em;box-shadow:0 8px 20px -8px #0006}
+/* S7 */
+#glow7{position:absolute;left:260px;top:60px;width:1300px;height:800px;background:radial-gradient(closest-side,#ffffffd0,#ffffff00);pointer-events:none}
+#ins7{position:absolute;left:1420px;top:790px;width:0;height:0;perspective:1700px}
+.ins3d{position:absolute;width:210px;height:490px;left:-105px;top:-245px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-64deg)}
+.ins3d svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ins3d .edge{fill:var(--insole-edge)}
+.ins3d .anc{position:absolute;width:2px;height:2px;margin:-1px 0 0 -1px;transform:translateZ(1px)}
+.ins3d .floorshadow{filter:blur(16px);opacity:.3}
+.insole .z-arch{opacity:.6}
+#lines7{position:absolute;inset:0;width:1920px;height:1080px;overflow:visible;pointer-events:none}
+#lines7 line{stroke:#16191D;stroke-width:1.5;opacity:.6}
+#lines7 circle{fill:#16191D}
+.lbl{position:absolute;transform:translate(-50%,-50%);background:#ffffffee;border:1px solid #16191D1f;border-radius:999px;padding:12px 22px;font-size:23px;font-weight:500;white-space:nowrap;box-shadow:0 10px 30px -14px #0005}
+.lbl b{font-family:var(--font-mono);font-weight:500;color:var(--accent);margin-left:10px}
+/* S8 */
+#s8{background:radial-gradient(90% 80% at 35% 40%,#FFFFFF,#E3E9F4)}
+#g8{background:repeating-linear-gradient(90deg,#16191D10 0 2px,transparent 2px 120px) 0 0/120px 100%,linear-gradient(#E6EBF3,#D5DDEA);border-top:2px solid #16191D18}
+.arrow{position:absolute;width:26px;height:46px;margin-left:-13px}
+.cglow{position:absolute;left:4%;width:92%;top:84%;height:70px;border-radius:50%;background:radial-gradient(closest-side,#3b7bffcc,#3b7bff00);filter:blur(4px)}
+/* end */
+#end{background:var(--paper);display:grid;place-items:center}
+#end .stack{display:grid;justify-items:center;gap:30px}
+#end .logo{font-family:var(--font-display);font-weight:800;font-stretch:125%;font-size:168px;letter-spacing:.06em;line-height:1}
+#end .logo i{font-style:normal;color:var(--accent)}
+#end .tag{font-family:var(--font-display);font-stretch:112%;font-weight:700;font-size:58px}
+#end .eyebrow{color:var(--muted)}
+/* fx */
+#wipe{position:absolute;top:-10%;height:120%;width:140%;background:var(--accent);transform:skewX(-12deg);z-index:60}
+#vig{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 45%,#0000 60%,#00000030);z-index:70;pointer-events:none}
+#grain{position:absolute;inset:-50px;opacity:.06;mix-blend-mode:overlay;z-index:71;pointer-events:none}
+</style></head>
+<body>
+<div id="film">
+  <!-- S1 Rutina y fatiga -->
+  <div class="layer" id="s1">
+    <div class="ground" id="g1"></div>
+    <div class="walker worn" id="w1"><div class="heat h" id="h1h"></div><div class="heat b" id="h1b"></div></div>
+    <div class="abs" style="left:1090px;top:300px;width:760px;color:#fff">
+      <p class="eyebrow" id="t1e" style="margin:0 0 18px;color:#ffffff88">Lunes · 18:40</p>
+      <div class="disp rv" style="font-size:132px"><span id="t1n">9.214 pasos.</span></div>
+      <div class="disp rv" style="font-size:66px;font-weight:700;margin-top:10px"><span id="t1b" style="color:#ffffffcc">Y tus pies <span style="color:var(--coral)">lo sienten.</span></span></div>
+    </div>
+  </div>
+
+  <!-- S2 Descubrimiento -->
+  <div class="layer" id="s2" style="background:radial-gradient(90% 90% at 70% 40%,#FFFFFF,#E7E7E2)">
+    <div class="abs" id="t2" style="left:120px;top:330px;width:620px">
+      <p class="eyebrow" id="t2e" style="margin:0 0 20px;color:var(--muted)">Esa noche</p>
+      <div class="disp rv" style="font-size:100px"><span>Hasta que</span></div>
+      <div class="disp rv" style="font-size:100px"><span>descubrió</span></div>
+      <div class="disp rv" style="font-size:100px"><span style="color:var(--accent)">Rexell.</span></div>
+    </div>
+    <div id="laptop"><div class="lid"><div class="screen"><video id="vlap" src="ui.mp4" muted preload="auto" playsinline></video></div></div><div class="base"></div></div>
+  </div>
+
+  <!-- S3–S5a: web real a pantalla completa -->
+  <div class="layer" id="sv">
+    <video id="vfull" src="ui.mp4" muted preload="auto" playsinline></video>
+    <div class="cap" id="cap"><span class="eyebrow" id="capE">Paso 1</span><div class="rv disp"><span id="capT">Diseña tu par</span></div></div>
+  </div>
+
+  <!-- S5b–S7: empaque, entrega, inspección -->
+  <div class="layer" id="sb" style="background:radial-gradient(90% 90% at 50% 40%,#FFFFFF,#E6E5E0)">
+    <div id="glow7"></div>
+    <div class="rig" id="rigBack"><svg viewBox="0 0 700 560">
+      <defs><filter id="bs" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="14"/></filter></defs>
+      <ellipse cx="350" cy="505" rx="340" ry="28" fill="#000" opacity=".28" filter="url(#bs)"/>
+      <polygon points="40,210 200,140 660,140 500,210" fill="#4a321d"/>
+      <path d="M60 206 C110 170 160 186 205 158 C255 174 300 148 350 166 C400 148 450 170 500 150 C560 164 600 148 645 146 L500 210 L40 210 Z" fill="#F4F1EA"/>
+    </svg></div>
+    <div id="mShoe" class="black"></div>
+    <div class="rig" id="rigFront"><svg viewBox="0 0 700 560">
+      <defs><linearGradient id="kf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D4A874"/><stop offset="1" stop-color="#B98A55"/></linearGradient>
+      <linearGradient id="ks" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A97B48"/><stop offset="1" stop-color="#8E6436"/></linearGradient></defs>
+      <path d="M60 206 C100 196 130 200 160 186 L170 210 L40 210 Z" fill="#F4F1EA"/>
+      <polygon points="40,210 500,210 500,500 40,500" fill="url(#kf)"/>
+      <polygon points="500,210 660,140 660,430 500,500" fill="url(#ks)"/>
+      <line x1="40" y1="211" x2="500" y2="211" stroke="#E8C597" stroke-width="3"/>
+      <line x1="500" y1="211" x2="660" y2="141" stroke="#C49663" stroke-width="3"/>
+      <text x="270" y="378" text-anchor="middle" fill="#3a2817" fill-opacity=".85" style="font:800 66px var(--font-display);font-stretch:125%;letter-spacing:5px">REXELL</text>
+      <text x="270" y="418" text-anchor="middle" fill="#3a2817" fill-opacity=".6" style="font:500 17px var(--font-mono);letter-spacing:4px">CALZADO A MEDIDA</text>
+    </svg></div>
+    <div class="rig" id="rigLid"><svg viewBox="0 0 700 560"><g id="lidG">
+      <polygon points="26,206 194,126 674,126 506,206" fill="#DDB27E"/>
+      <polygon points="26,206 506,206 506,250 26,250" fill="#C59462"/>
+      <polygon points="506,206 674,126 674,170 506,250" fill="#A27342"/>
+      <line x1="26" y1="207" x2="506" y2="207" stroke="#EDCB9C" stroke-width="3"/>
+    </g></svg></div>
+    <div class="sticker" id="sticker" style="left:960px;top:732px">RX-104582 · EU 42</div>
+    <div id="track"><div class="line"></div><div class="fill" id="tfill"></div></div>
+    <div id="ins7"><div class="ins3d" id="ins3d"></div></div>
+    <svg id="lines7"></svg>
+    <div class="lbl" id="l-perf">Higiene activa<b>Ø 1,2 mm</b></div>
+    <div class="lbl" id="l-arch">Soporte de arco<b>18 mm</b></div>
+    <div class="lbl" id="l-heel">Talón con gel<b>+ amortiguación</b></div>
+    <div class="abs" id="t5" style="left:120px;top:150px"><p class="eyebrow" style="margin:0 0 16px;color:var(--muted)">Pedido RX-104582</p><div class="disp rv" style="font-size:88px"><span>Hecho para ti.</span></div></div>
+    <div class="abs" id="t6" style="left:120px;top:150px"><p class="eyebrow" style="margin:0 0 16px;color:var(--muted)">5 días después</p><div class="disp rv" style="font-size:88px"><span>En tu puerta.</span></div></div>
+    <div class="abs" id="t7" style="left:120px;top:150px"><p class="eyebrow" style="margin:0 0 16px;color:var(--muted)">Revisado a mano</p><div class="disp rv" style="font-size:88px"><span>Calidad que se siente.</span></div></div>
+  </div>
+
+  <!-- S8 Uso y confort -->
+  <div class="layer" id="s8">
+    <div class="ground" id="g8"></div>
+    <div class="walker black" id="w8"><div class="cglow" id="cg8"></div></div>
+    <div class="abs" style="left:1090px;top:300px;width:760px">
+      <p class="eyebrow" style="margin:0 0 18px;color:var(--muted)">Otro lunes · 18:40</p>
+      <div class="disp rv" style="font-size:132px"><span id="t8n">12.480 pasos.</span></div>
+      <div class="disp rv" style="font-size:66px;font-weight:700;margin-top:10px"><span id="t8b">Y ni <span style="color:var(--accent)">lo notas.</span></span></div>
+    </div>
+  </div>
+
+  <div class="layer" id="end"><div class="stack">
+    <div class="rv"><span class="logo">REXELL<i>.</i></span></div>
+    <div class="rv"><span class="tag">Diseñado por ti. Hecho para tu pisada.</span></div>
+    <div class="rv"><span class="eyebrow">Calzado masculino a medida · rexell.com</span></div>
+  </div></div>
+
+  <div id="wipe"></div>
+  <div id="vig"></div>
+  <div id="grain"></div>
+</div>
+<script src="shared.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,a,b)=>cl((t-a)/(b-a));
+const lerp=(a,b,p)=>a+(b-a)*p;
+const eo=p=>1-Math.pow(1-p,3);
+const eio=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+const back=p=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(p-1,3)+c1*Math.pow(p-1,2);};
+const vis=(el,o)=>{el.style.opacity=o;el.style.visibility=o>0.001?'visible':'hidden';};
+const fmt=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+
+/* build shoes / insole */
+$('#w1').insertAdjacentHTML('afterbegin',shoeSVG('w1'));
+$('#w8').insertAdjacentHTML('afterbegin',shoeSVG('w8'));
+$('#mShoe').innerHTML=shoeSVG('m');
+$('#ins3d').innerHTML=insoleSVG();
+// rings + arrows
+for(let i=0;i<2;i++){ $('#w1').insertAdjacentHTML('beforeend',`<div class="ring r1" style="border-color:#ff5a3c"></div>`); $('#w8').insertAdjacentHTML('beforeend',`<div class="ring r8" style="border-color:#3b7bff"></div>`); }
+const ARW=[];for(let i=0;i<9;i++){const d=document.createElement('div');d.className='arrow';d.innerHTML=`<svg viewBox="0 0 26 46"><path d="M13 44 V8 M4 16 L13 6 L22 16" fill="none" stroke="#3b7bff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;$('#w8').appendChild(d);ARW.push(d);}
+// track nodes
+const NODES=['Fabricación','Control de calidad','En camino','Entregado'];
+NODES.forEach((n,i)=>$('#track').insertAdjacentHTML('beforeend',`<div class="node" style="left:${i*333.33}px">✓<span style="${i===0?'left:-2px':i===3?'right:-2px':'left:50%;transform:translateX(-50%)'}">${n}</span></div>`));
+// rv words split
+document.querySelectorAll('.rv>span').forEach(s=>{});
+// grain
+(()=>{const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d');const d=x.createImageData(256,256);let s=1;for(let i=0;i<d.data.length;i+=4){s=(s*16807)%2147483647;const v=s%255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255;}x.putImageData(d,0,0);$('#grain').style.background=`url(${c.toDataURL()})`;})();
+
+/* reveal helpers */
+function rv(span,p,exit=0){ // p: 0..1 enter, exit 0..1
+  const q=eo(cl(p)); const e=eio(cl(exit));
+  span.style.transform=`translateY(${(1-q)*112 - e*112}%)`;
+}
+function rvGroup(root,t,a,stagger,dur,exitAt,exitDur=.25){
+  root.querySelectorAll('.rv>span').forEach((s,i)=>rv(s,P(t,a+i*stagger,a+i*stagger+dur),exitAt?P(t,exitAt+i*0.03,exitAt+i*0.03+exitDur):0));
+  const ey=root.querySelector('.eyebrow:not(.rv .eyebrow)'); if(ey&&ey.parentElement===root){ey.style.opacity=P(t,a-.05,a+.2)*(exitAt?1-P(t,exitAt,exitAt+exitDur*.7):1);}
+}
+
+/* walk cycle (treadmill) */
+const WW=820,WH=820*292/700;
+const HEEL=[WW*.06,WH*.93],TOE=[WW*.95,WH*.88];
+function walk(el,t,period,speed,x0,y0,extra){
+  const ph=((t/period)%1+1)%1;
+  const A=speed*period*.8/2;
+  let x,lift=0,rot,piv;
+  if(ph<.8){x=A-2*A*(ph/.8);}else{const q=eio((ph-.8)/.2);x=-A+2*A*q;lift=Math.sin(Math.PI*q)*46;}
+  if(ph<.15){rot=lerp(-9,0,eo(ph/.15));piv=HEEL;}
+  else if(ph<.55){rot=0;piv=HEEL;}
+  else if(ph<.8){rot=lerp(0,13,eio((ph-.55)/.25));piv=TOE;}
+  else {const q=(ph-.8)/.2;rot=lerp(13,-9,eio(q));piv=[lerp(TOE[0],HEEL[0],q),lerp(TOE[1],HEEL[1],q)];}
+  el.style.transform=`translate(${x0+x}px,${y0-lift}px) translate(${piv[0]}px,${piv[1]}px) rotate(${rot}deg) translate(${-piv[0]}px,${-piv[1]}px)`;
+  return ph;
+}
+
+/* video timing (segundos del video de la web) */
+function vtLap(t){ if(t<2.10) return 1.10; if(t<3.30) return lerp(1.10,3.10,P(t,2.10,3.30)); return lerp(3.10,4.10,P(t,3.30,3.58)); }
+const SEG=[[3.58,4.86,4.12,8.55,'Paso 1','Elige color y material'],[4.86,5.50,12.95,14.75,'Paso 1','Elige color y material'],[5.50,7.50,16.62,21.45,'Paso 2','Ajusta tu confort'],[7.50,8.30,30.25,31.85,'Paso 3','Pedido confirmado']];
+function vtFull(t){ for(const s of SEG) if(t<s[1]) return lerp(s[2],s[3],P(t,s[0],s[1])); const l=SEG.at(-1); return l[3]; }
+
+function wipe(t,a){ // panel crosses left→right; covers screen at a
+  const w=$('#wipe'); a=[2.0,13.0].find(x=>Math.abs(t-x)<.25)??a; const p=P(t,a-.22,a+.22);
+  if(p<=0||p>=1){w.style.visibility='hidden';return;}
+  w.style.visibility='visible'; w.style.transform=`translateX(${lerp(-150,110,eio(p))}%) skewX(-12deg)`; w.style.left='0';
+}
+
+function labelsS7(on){
+  const pts={};
+  for(const id of ['perf','arch','heel']){const r=$('#a-'+id).getBoundingClientRect();pts[id]=[r.left+r.width/2,r.top+r.height/2];}
+  const off={perf:[170,-170],arch:[-260,120],heel:[40,170]};
+  let svg='';
+  for(const id in pts){const [x,y]=pts[id];const lx=Math.max(260,Math.min(1690,x+off[id][0])),ly=Math.max(80,Math.min(1010,y+off[id][1]));
+    const l=$('#l-'+id);l.style.left=lx+'px';l.style.top=ly+'px';
+    svg+=`<line x1="${x}" y1="${y}" x2="${lx}" y2="${ly}"/><circle cx="${x}" cy="${y}" r="6"/>`;}
+  $('#lines7').innerHTML=svg;
+}
+
+function render(t){
+  /* ---------- S1 0–2.0 ---------- */
+  const s1=t<2.0; vis($('#s1'),s1?1:0);
+  if(s1){
+    $('#g1').style.backgroundPosition=`${-t*330}px 0, 0 0`;
+    const ph=walk($('#w1'),t+.05,.95,330,170,812-WH*.93+2);
+    const hp=Math.max(0,1-Math.abs(ph-.2)/.25), bp=Math.max(0,1-Math.abs(ph-.68)/.22);
+    $('#h1h').style.opacity=.45+.55*hp; $('#h1b').style.opacity=.3+.6*bp;
+    document.querySelectorAll('.r1').forEach((r,i)=>{const q=((ph+.85+i*.5)%1);const sz=60+q*220;const pos=i?[.12,.72]:[.66,.84];
+      r.style.width=r.style.height=sz+'px';r.style.left=(WW*pos[0]-sz/2)+'px';r.style.top=(WH*pos[1]-sz/2)+'px';r.style.opacity=(1-q)*.6;});
+    const n=Math.round(lerp(9214,12480,eio(P(t,.15,1.55))));
+    $('#t1n').textContent=fmt(n)+' pasos.';
+    rv($('#t1n'),P(t,.05,.5)); rv($('#t1b'),P(t,.55,.95));
+    $('#t1e').style.opacity=P(t,0,.3);
+    $('#s1').style.transform=`scale(${1.04-0.04*eo(P(t,0,2))})`;
+  }
+  wipe(t,2.0);
+
+  /* ---------- S2 2.0–3.58 ---------- */
+  const s2=t>=2.0&&t<3.62; vis($('#s2'),s2?1:0);
+  if(s2){
+    const pin=eo(P(t,2.0,2.5)), push=eio(P(t,3.28,3.58));
+    const rx=1210,ry=520; // screen center at rest
+    const cx=lerp(rx,960,push), cy=lerp(ry+260*(1-pin),540,push), s=lerp(.94+.06*pin,2,push);
+    $('#laptop').style.transform=`translate(${cx-500}px,${cy-290}px) scale(${s})`;
+    rvGroup($('#t2'),t,2.12,.08,.4,3.18,.2);
+  }
+
+  /* ---------- S3–S5a: web a pantalla completa 3.58–8.30 ---------- */
+  const sv=t>=3.58&&t<8.42; vis($('#sv'),sv?1:0);
+  if(sv){
+    let punch=1; for(const s of SEG){ if(t>=s[0]&&t<s[1]) punch=1+.035*(1-eo(P(t,s[0],s[0]+.22))); }
+    if(t<3.8) punch=1;
+    const out=eio(P(t,8.18,8.42));
+    $('#vfull').style.transform=`scale(${punch+out*.25})`;
+    $('#sv').style.opacity=1-out;
+    const seg=SEG.find(s=>t<s[1])||SEG.at(-1);
+    $('#capE').textContent=seg[4]; $('#capT').textContent=seg[5];
+    const segStart=SEG.find(s=>s[5]===seg[5])[0];
+    const segEnd=[...SEG].reverse().find(s=>s[5]===seg[5])[1];
+    rv($('#capT'),P(t,segStart+.1,segStart+.45),P(t,segEnd-.2,segEnd));
+    $('#cap').style.opacity=cl(P(t,segStart+.12,segStart+.3))*(1-P(t,segEnd-.12,segEnd));
+  }
+
+  /* ---------- S5b–S7 8.18–13.0 ---------- */
+  const sb=t>=8.18&&t<13.02; vis($('#sb'),sb?1:0);
+  if(sb){
+    // box rig
+    const bin=eo(P(t,8.18,8.45)), bdrop=eio(P(t,10.55,11.0));
+    const bob=t>9.35&&t<10.15?Math.sin((t-9.35)*Math.PI*2.5)*-8:0;
+    const rigT=`translate(0px,${(1-bin)*60+bdrop*560+bob}px) scale(${.92+.08*bin})`;
+    ['#rigBack','#rigFront','#rigLid'].forEach(id=>{$(id).style.transform=rigT;$(id).style.opacity=bin*(1-bdrop);});
+    // lid close / open
+    const lc=P(t,8.62,8.98), lo=eio(P(t,10.12,10.5));
+    let ly=-480*(1-eo(lc)); if(lc>=1) ly=0;
+    const squash=lc>0.85&&lc<1?1:0;
+    $('#lidG').setAttribute('transform',`translate(${lo*140} ${ly-lo*400}) rotate(${lo*16} 350 200)`);
+    $('#rigLid').style.opacity=(lc>0?1:0)*bin*(1-P(t,10.4,10.55));
+    // sticker
+    const st=P(t,8.98,9.2);
+    $('#sticker').style.transform=`translate(${0}px,${bob+bdrop*560}px) scale(${st>0?back(st):0}) rotate(-4deg)`;
+    $('#sticker').style.opacity=(st>0?1:0)*(1-P(t,10.05,10.2));
+    // shoe: descend → in box → rise → S7 pose
+    const d=eo(P(t,8.22,8.66)), r=eio(P(t,10.3,11.15));
+    const y0=lerp(-700,0,d);
+    const sx=lerp(0,-120,r), sy=lerp(y0+bob,-30,r), sc=lerp(1,1.9,r)*(1+0.03*eio(P(t,11.15,12.9)));
+    const srot=lerp(-4,0,r);
+    $('#mShoe').style.transform=`translate(${sx}px,${sy}px) rotate(${srot}deg) scale(${sc})`;
+    // z order: shoe above front once risen out
+    $('#mShoe').style.zIndex=t>10.75?5:0; $('#rigFront').style.zIndex=1; $('#rigLid').style.zIndex=2; $('#rigBack').style.zIndex=0;
+    // gloss sweep
+    
+    // track
+    const tr=P(t,9.35,9.5)*(1-P(t,10.12,10.3)); $('#track').style.opacity=tr; $('#track').style.transform=`translateY(${(1-eo(P(t,9.35,9.55)))*20}px)`;
+    const nodes=document.querySelectorAll('.node'); let lit=0;
+    nodes.forEach((n,i)=>{const on=t>=9.45+i*.17;n.classList.toggle('on',on); if(on) lit=i;});
+    $('#tfill').style.width=(cl((t-9.45)/(.17*3))*1000)+'px';
+    // glow + insole S7
+    $('#glow7').style.opacity=eo(P(t,10.5,11.2));
+    const ii=eio(P(t,11.5,12.15));
+    $('#ins7').style.opacity=ii; $('#ins7').style.transform=`translate(${lerp(-420,0,ii)}px,${lerp(-160,0,ii)}px) scale(${lerp(.6,1.18,ii)})`;
+    const lo7=eo(P(t,12.1,12.45));
+    if(lo7>0) labelsS7(true);
+    ['perf','arch','heel'].forEach((id,i)=>{const q=eo(P(t,12.1+i*.08,12.4+i*.08));const l=$('#l-'+id);l.style.opacity=q;l.style.transform=`translate(-50%,-50%) scale(${.85+.15*q})`;});
+    $('#lines7').style.opacity=lo7;
+    // captions
+    rvGroup($('#t5'),t,8.3,.05,.35,9.3,.2);
+    rvGroup($('#t6'),t,9.45,.05,.35,10.5,.2);
+    rvGroup($('#t7'),t,11.3,.05,.4,0);
+    $('#sb').style.transform=`scale(${1+0.02*P(t,11.1,13)})`;
+  }
+
+  /* ---------- S8 13.0–14.35 ---------- */
+  const s8=t>=13.0&&t<14.5; vis($('#s8'),s8?1:0);
+  if(s8){
+    const lt=t-13.0;
+    $('#g8').style.backgroundPosition=`${-lt*330}px 0, 0 0`;
+    const ph=walk($('#w8'),lt+.82,.95,330,170,812-WH*.93+2);
+    const gp=Math.max(0,1-Math.abs(ph-.2)/.3); $('#cg8').style.opacity=.55+.45*gp;
+    document.querySelectorAll('.r8').forEach((r,i)=>{const q=((ph+.85+i*.5)%1);const sz=60+q*240;const pos=i?[.12,.92]:[.66,.92];
+      r.style.width=r.style.height=sz+'px';r.style.left=(WW*pos[0]-sz/2)+'px';r.style.top=(WH*pos[1]-sz*.18)+'px';r.style.height=(sz*.36)+'px';r.style.opacity=(1-q)*.5;});
+    ARW.forEach((a,i)=>{const q=((lt*1.1+i/ARW.length)%1);const x=WW*(.12+.72*((i*0.37)%1));a.style.left=x+'px';a.style.top=(WH*.55-q*190)+'px';a.style.opacity=Math.sin(Math.PI*q)*.9;a.style.transform=`scale(${.8+.4*(1-q)})`;});
+    rv($('#t8n'),P(t,13.12,13.5)); rv($('#t8b'),P(t,13.45,13.85));
+    $('#s8').style.transform=`scale(${1+0.03*P(t,13,14.5)})`;
+    $('#s8').style.opacity=1-P(t,14.25,14.45);
+  }
+
+  /* ---------- End 14.3–15 ---------- */
+  const en=t>=14.25; vis($('#end'),en?1:0);
+  if(en){ rvGroup($('#end .stack'),t,14.3,.09,.4,0); $('#end').style.opacity=P(t,14.25,14.4); }
+
+  /* fx */
+  const f=Math.floor(t*30); $('#grain').style.transform=`translate(${(f*37)%50-25}px,${(f*53)%50-25}px)`;
+}
+
+/* seek API for the renderer */
+const vlap=$('#vlap'), vfull=$('#vfull');
+function seekVid(v,time){return new Promise(r=>{ if(Math.abs(v.currentTime-time)<0.0005) return r(); const done=()=>{v.removeEventListener('seeked',done);r();}; v.addEventListener('seeked',done); v.currentTime=time; });}
+const raf=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+window.seek=async t=>{
+  const jobs=[];
+  if(t>=1.95&&t<3.65) jobs.push(seekVid(vlap,vtLap(t)));
+  if(t>=3.5&&t<8.45) jobs.push(seekVid(vfull,vtFull(t)));
+  await Promise.all(jobs);
+  render(t); await raf();
+};
+window.ready=(async()=>{
+  await document.fonts.load('800 100px Archivo'); await document.fonts.load('500 20px "IBM Plex Mono"'); await document.fonts.ready;
+  await Promise.all([vlap,vfull].map(v=>v.readyState>=2?0:new Promise(r=>v.addEventListener('loadeddata',r,{once:true}))));
+  render(0); return true;
+})();
+</script>
+</body></html>
